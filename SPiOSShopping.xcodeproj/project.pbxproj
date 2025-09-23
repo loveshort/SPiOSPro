@@ -6,8 +6,16 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		97B57BBC33AFA1DFD86F9FE9 /* Pods_SPiOSShopping.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 933FF0A2E69642F0112ABEF9 /* Pods_SPiOSShopping.framework */; };
+		AC5D4ED42E72A5BF00628F50 /* Toast in Frameworks */ = {isa = PBXBuildFile; productRef = AC5D4ED32E72A5BF00628F50 /* Toast */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
+		30307DD6EAEA3EDB19FCE2D5 /* Pods-SPiOSShopping.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SPiOSShopping.release.xcconfig"; path = "Target Support Files/Pods-SPiOSShopping/Pods-SPiOSShopping.release.xcconfig"; sourceTree = "<group>"; };
+		933FF0A2E69642F0112ABEF9 /* Pods_SPiOSShopping.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SPiOSShopping.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		ACD0075D2E61D41A00439978 /* SPiOSShopping.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SPiOSShopping.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		C7C8B3533EF0ED50ABCCA97E /* Pods-SPiOSShopping.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SPiOSShopping.debug.xcconfig"; path = "Target Support Files/Pods-SPiOSShopping/Pods-SPiOSShopping.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -36,17 +44,38 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AC5D4ED42E72A5BF00628F50 /* Toast in Frameworks */,
+				97B57BBC33AFA1DFD86F9FE9 /* Pods_SPiOSShopping.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		01B7AA2873F5829199A7ACEA /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				933FF0A2E69642F0112ABEF9 /* Pods_SPiOSShopping.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		7DA8D85A3F024BD902E54B39 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				C7C8B3533EF0ED50ABCCA97E /* Pods-SPiOSShopping.debug.xcconfig */,
+				30307DD6EAEA3EDB19FCE2D5 /* Pods-SPiOSShopping.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		ACD007542E61D41A00439978 = {
 			isa = PBXGroup;
 			children = (
 				ACD0075F2E61D41A00439978 /* SPiOSShopping */,
 				ACD0075E2E61D41A00439978 /* Products */,
+				7DA8D85A3F024BD902E54B39 /* Pods */,
+				01B7AA2873F5829199A7ACEA /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -65,9 +94,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = ACD007702E61D41B00439978 /* Build configuration list for PBXNativeTarget "SPiOSShopping" */;
 			buildPhases = (
+				92993EC7D89394321034CFE0 /* [CP] Check Pods Manifest.lock */,
 				ACD007592E61D41A00439978 /* Sources */,
 				ACD0075A2E61D41A00439978 /* Frameworks */,
 				ACD0075B2E61D41A00439978 /* Resources */,
+				1FC532289CF0CEDC9ABAD886 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -77,8 +108,6 @@
 				ACD0075F2E61D41A00439978 /* SPiOSShopping */,
 			);
 			name = SPiOSShopping;
-			packageProductDependencies = (
-			);
 			productName = SPiOSShopping;
 			productReference = ACD0075D2E61D41A00439978 /* SPiOSShopping.app */;
 			productType = "com.apple.product-type.application";
@@ -107,6 +136,9 @@
 			);
 			mainGroup = ACD007542E61D41A00439978;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				AC5D4ED22E72A5BF00628F50 /* XCRemoteSwiftPackageReference "Toast-Swift" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = ACD0075E2E61D41A00439978 /* Products */;
 			projectDirPath = "";
@@ -127,6 +159,52 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		1FC532289CF0CEDC9ABAD886 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-SPiOSShopping/Pods-SPiOSShopping-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-SPiOSShopping/Pods-SPiOSShopping-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-SPiOSShopping/Pods-SPiOSShopping-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		92993EC7D89394321034CFE0 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-SPiOSShopping-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		ACD007592E61D41A00439978 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -140,6 +218,7 @@
 /* Begin XCBuildConfiguration section */
 		ACD007712E61D41B00439978 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C7C8B3533EF0ED50ABCCA97E /* Pods-SPiOSShopping.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -168,6 +247,7 @@
 		};
 		ACD007722E61D41B00439978 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 30307DD6EAEA3EDB19FCE2D5 /* Pods-SPiOSShopping.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -337,6 +417,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		AC5D4ED22E72A5BF00628F50 /* XCRemoteSwiftPackageReference "Toast-Swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/scalessec/Toast-Swift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.1.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		AC5D4ED32E72A5BF00628F50 /* Toast */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AC5D4ED22E72A5BF00628F50 /* XCRemoteSwiftPackageReference "Toast-Swift" */;
+			productName = Toast;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = ACD007552E61D41A00439978 /* Project object */;
 }

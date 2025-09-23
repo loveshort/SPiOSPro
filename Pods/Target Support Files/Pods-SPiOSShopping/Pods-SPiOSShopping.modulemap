@@ -1,0 +1,6 @@
+framework module Pods_SPiOSShopping {
+  umbrella header "Pods-SPiOSShopping-umbrella.h"
+
+  export *
+  module * { export * }
+}

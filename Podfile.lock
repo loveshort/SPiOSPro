@@ -1,0 +1,161 @@
+PODS:
+  - Alamofire (5.10.2)
+  - CYLTabBarController (1.29.2):
+    - CYLTabBarController/Core (= 1.29.2)
+  - CYLTabBarController/Core (1.29.2)
+  - EmptyDataSet-Swift (5.0.0)
+  - Gifu (3.5.1)
+  - HBDNavigationBar (1.9.8)
+  - JXBanner (0.3.6):
+    - JXBanner/Banner (= 0.3.6)
+    - JXBanner/PageControl (= 0.3.6)
+  - JXBanner/Banner (0.3.6):
+    - JXBanner/Banner/API (= 0.3.6)
+    - JXBanner/Banner/Banner (= 0.3.6)
+    - JXBanner/Banner/Cell (= 0.3.6)
+    - JXBanner/Banner/Common (= 0.3.6)
+    - JXBanner/Banner/Transform (= 0.3.6)
+  - JXBanner/Banner/API (0.3.6):
+    - JXBanner/Banner/Cell
+    - JXBanner/PageControl
+  - JXBanner/Banner/Banner (0.3.6):
+    - JXBanner/Banner/API
+    - JXBanner/Banner/Common
+    - JXBanner/Banner/Transform
+  - JXBanner/Banner/Cell (0.3.6)
+  - JXBanner/Banner/Common (0.3.6)
+  - JXBanner/Banner/Transform (0.3.6):
+    - JXBanner/Banner/API
+  - JXBanner/PageControl (0.3.6):
+    - JXPageControl
+  - JXPageControl (0.1.5):
+    - JXPageControl/Common (= 0.1.5)
+    - JXPageControl/Jump (= 0.1.5)
+    - JXPageControl/Transform (= 0.1.5)
+  - JXPageControl/Common (0.1.5)
+  - JXPageControl/Jump (0.1.5):
+    - JXPageControl/Common
+  - JXPageControl/Transform (0.1.5):
+    - JXPageControl/Common
+  - JXSegmentedView (1.4.1)
+  - Kingfisher (7.10.2)
+  - MJRefresh (3.7.9)
+  - Moya (15.0.0):
+    - Moya/Core (= 15.0.0)
+  - Moya/Core (15.0.0):
+    - Alamofire (~> 5.0)
+  - "NSObject+Rx (5.2.2)":
+    - RxSwift (~> 6.2)
+  - Reachability (3.7.6)
+  - RxCocoa (6.8.0):
+    - RxRelay (= 6.8.0)
+    - RxSwift (= 6.8.0)
+  - RxGesture (4.0.4):
+    - RxCocoa (~> 6.0)
+    - RxSwift (~> 6.0)
+  - RxRelay (6.8.0):
+    - RxSwift (= 6.8.0)
+  - RxSwift (6.8.0)
+  - RxSwiftExt (6.2.1):
+    - RxSwiftExt/Core (= 6.2.1)
+    - RxSwiftExt/RxCocoa (= 6.2.1)
+  - RxSwiftExt/Core (6.2.1):
+    - RxSwift (~> 6.0)
+  - RxSwiftExt/RxCocoa (6.2.1):
+    - RxCocoa (~> 6.0)
+    - RxSwiftExt/Core
+  - SmartCodable (5.0.10):
+    - SmartCodable/Core (= 5.0.10)
+  - SmartCodable/Core (5.0.10)
+  - SnapKit (5.7.1)
+  - SwiftyBeaver (2.1.1)
+  - SwiftyJSON (5.0.2)
+  - YYImage (1.0.5):
+    - YYImage/Core (= 1.0.5)
+  - YYImage/Core (1.0.5)
+
+DEPENDENCIES:
+  - CYLTabBarController
+  - EmptyDataSet-Swift (~> 5.0.0)
+  - Gifu
+  - HBDNavigationBar
+  - JXBanner
+  - JXSegmentedView
+  - Kingfisher (= 7.10.2)
+  - MJRefresh
+  - Moya (~> 15.0.0)
+  - "NSObject+Rx"
+  - Reachability
+  - RxCocoa (~> 6.8.0)
+  - RxGesture
+  - RxSwift (~> 6.8.0)
+  - RxSwiftExt
+  - RxSwiftExt/Core
+  - SmartCodable
+  - SnapKit
+  - SwiftyBeaver
+  - SwiftyJSON
+  - YYImage (from `https://gitee.com/tripartite/YYImage.git`)
+
+SPEC REPOS:
+  https://github.com/CocoaPods/Specs.git:
+    - Alamofire
+    - CYLTabBarController
+    - EmptyDataSet-Swift
+    - Gifu
+    - HBDNavigationBar
+    - JXBanner
+    - JXPageControl
+    - JXSegmentedView
+    - Kingfisher
+    - MJRefresh
+    - Moya
+    - "NSObject+Rx"
+    - Reachability
+    - RxCocoa
+    - RxGesture
+    - RxRelay
+    - RxSwift
+    - RxSwiftExt
+    - SmartCodable
+    - SnapKit
+    - SwiftyBeaver
+    - SwiftyJSON
+
+EXTERNAL SOURCES:
+  YYImage:
+    :git: https://gitee.com/tripartite/YYImage.git
+
+CHECKOUT OPTIONS:
+  YYImage:
+    :commit: e0e58fa0cd4505bbd89d8f2810c90526ba3d441d
+    :git: https://gitee.com/tripartite/YYImage.git
+
+SPEC CHECKSUMS:
+  Alamofire: 7193b3b92c74a07f85569e1a6c4f4237291e7496
+  CYLTabBarController: db44b5901a28693a8a4279e4721b3aafdd36c178
+  EmptyDataSet-Swift: eb382c0c87a2d9c678077385a595cec52da38171
+  Gifu: 9f7e52357d41c0739709019eb80a71ad9aab1b6d
+  HBDNavigationBar: f6aaedfb1ead68975b22b893ec61bfc1946711f5
+  JXBanner: 348dbef856e786494cbf30fb45d6b84826f2d3c5
+  JXPageControl: e9487b39e2e58fc17790833214f3b8e935bef98b
+  JXSegmentedView: cd73555ce2134d1656db2cb383ba9c2f36fb5078
+  Kingfisher: 99edc495d3b7607e6425f0d6f6847b2abd6d716d
+  MJRefresh: ff9e531227924c84ce459338414550a05d2aea78
+  Moya: 138f0573e53411fb3dc17016add0b748dfbd78ee
+  "NSObject+Rx": 61cf1f7306a73dcef8b36649198af0813ec18dfd
+  Reachability: fd0ecd23705e2599e4cceeb943222ae02296cbc6
+  RxCocoa: 2d33c1e1e5d66492052ad46b11024ae287572880
+  RxGesture: f3efb47ed2d26a8082f7b660d4a59970e275a7f8
+  RxRelay: 335c78b926a2aea8d863a6d25f1ed3b5ad8e8705
+  RxSwift: 4e28be97cbcfeee614af26d83415febbf2bf6f45
+  RxSwiftExt: 43aaacb6a4d3c69c55e9d1cf4f79920043d13583
+  SmartCodable: 27a0e5b33424f065e21a77882903c65954f1be80
+  SnapKit: d612e99e678a2d3b95bf60b0705ed0a35c03484a
+  SwiftyBeaver: ade157e4f857812e7d7f15f2e3396bb8733f8a1c
+  SwiftyJSON: f5b1bf1cd8dd53cd25887ac0eabcfd92301c6a5a
+  YYImage: 73ef3a290b17b9e38ea43189735fe8669f8c6539
+
+PODFILE CHECKSUM: 5817d85f357f30e2f17c29822f831d09071bcea9
+
+COCOAPODS: 1.16.2
