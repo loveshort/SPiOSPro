@@ -1,5 +1,5 @@
-# Uncomment the next line to define a global platform for your project
-# platform :ios, '13.0'
+# Define a global platform for your project
+platform :ios, '13.0'
 #source 'https://cdn.cocoapods.org/'
 #source 'https://github.com/volcengine/volcengine-specs.git'
 source 'https://github.com/CocoaPods/Specs.git'
@@ -41,7 +41,6 @@ target 'SPiOSShopping' do
   pod "RxGesture"
   #日志
   pod 'SwiftyBeaver'
- 
   
   #路由
   pod 'JLSwiftRouter' 
