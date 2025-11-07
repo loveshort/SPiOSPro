@@ -44,6 +44,10 @@ class MainToolListViewController: UIViewController {
             ToolItem(title: "PrintHelper", description: "打印工具类", type: .printhelper),
             ToolItem(title: "网络请求", description: "网络请求封装和调用", type: .network),
             ToolItem(title: "第三方库封装", description: "Kingfisher、MJRefresh等封装", type: .thirdparty),
+            ToolItem(title: "权限管理", description: "相机、相册、定位等权限", type: .permission),
+            ToolItem(title: "加密解密", description: "MD5、SHA256、Base64等", type: .crypto),
+            ToolItem(title: "分享功能", description: "系统分享功能封装", type: .share),
+            ToolItem(title: "版本管理", description: "版本比较和检查", type: .version),
         ])
     ]
     
@@ -174,6 +178,14 @@ extension MainToolListViewController: UITableViewDelegate {
             return NetworkExampleViewController()
         case .thirdparty:
             return ThirdPartyWrapperExampleViewController()
+        case .permission:
+            return PermissionExampleViewController()
+        case .crypto:
+            return CryptoExampleViewController()
+        case .share:
+            return ShareExampleViewController()
+        case .version:
+            return VersionExampleViewController()
         }
     }
 }
@@ -212,6 +224,10 @@ enum ToolType {
     case printhelper
     case network
     case thirdparty
+    case permission
+    case crypto
+    case share
+    case version
 }
 
 // MARK: - 工具列表单元格

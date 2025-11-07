@@ -38,6 +38,9 @@ class ThirdPartyWrapperExampleViewController: BaseExampleViewController {
             },
             ExampleItem(title: "SwiftyBeaver 日志", description: "MCLogger.shared.debug()") {
                 self.demoSwiftyBeaver()
+            },
+            ExampleItem(title: "Toast-Swift 提示", description: "view.showToast()") {
+                self.demoToast()
             }
         ]
         
@@ -208,6 +211,37 @@ class ThirdPartyWrapperExampleViewController: BaseExampleViewController {
         MCLogger.shared.error("这是错误日志")
         
         showResult("SwiftyBeaver 日志示例\n\n已输出日志到控制台\n请查看Xcode控制台")
+    }
+    
+    private func demoToast() {
+        let alert = UIAlertController(title: "Toast-Swift 示例", message: "选择Toast类型", preferredStyle: .actionSheet)
+        
+        alert.addAction(UIAlertAction(title: "普通Toast", style: .default) { _ in
+            self.view.showToast(message: "这是普通Toast提示")
+        })
+        
+        alert.addAction(UIAlertAction(title: "成功Toast", style: .default) { _ in
+            self.view.showSuccessToast(message: "操作成功！")
+        })
+        
+        alert.addAction(UIAlertAction(title: "错误Toast", style: .default) { _ in
+            self.view.showErrorToast(message: "操作失败！")
+        })
+        
+        alert.addAction(UIAlertAction(title: "警告Toast", style: .default) { _ in
+            self.view.showWarningToast(message: "请注意！")
+        })
+        
+        alert.addAction(UIAlertAction(title: "取消", style: .cancel))
+        
+        // iPad支持
+        if let popover = alert.popoverPresentationController {
+            popover.sourceView = view
+            popover.sourceRect = CGRect(x: view.bounds.midX, y: view.bounds.midY, width: 0, height: 0)
+            popover.permittedArrowDirections = []
+        }
+        
+        present(alert, animated: true)
     }
     
     // MARK: - 辅助方法

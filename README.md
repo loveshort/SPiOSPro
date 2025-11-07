@@ -785,15 +785,246 @@ MCLogger.shared.error("错误信息")
 MCLog("调试信息", level: .debug)
 ```
 
+### ToastWrapper
+
+Toast提示封装，简化Toast-Swift的使用（SPM库）。
+
+**主要功能：**
+- ✅ 一行代码显示Toast
+- ✅ 成功/错误/警告Toast
+- ✅ 自定义位置和样式
+- ✅ 带图片的Toast
+
+**使用示例：**
+```swift
+// 普通Toast
+view.showToast(message: "提示信息")
+viewController.showToast(message: "提示信息")
+
+// 成功Toast
+view.showSuccessToast(message: "操作成功！")
+
+// 错误Toast
+view.showErrorToast(message: "操作失败！")
+
+// 警告Toast
+view.showWarningToast(message: "请注意！")
+
+// 带图片的Toast
+view.showToastWithImage(message: "提示", image: UIImage(systemName: "checkmark"))
+
+// 全局方法
+MCToast.show(message: "提示信息")
+MCToast.showSuccess(message: "成功")
+MCToast.showError(message: "错误")
+```
+
+## 🔐 其他工具类
+
+### PermissionHelper
+
+权限管理工具类，简化系统权限请求。
+
+**主要功能：**
+- ✅ 相机权限
+- ✅ 相册权限
+- ✅ 定位权限
+- ✅ 通知权限
+- ✅ 麦克风权限
+- ✅ 打开应用设置
+
+**使用示例：**
+```swift
+// 检查相机权限
+let status = PermissionHelper.checkCameraPermission()
+
+// 请求相机权限
+PermissionHelper.requestCameraPermission { granted in
+    if granted {
+        // 使用相机
+    }
+}
+
+// 打开应用设置
+PermissionHelper.openAppSettings()
+```
+
+### CryptoHelper
+
+加密解密工具类，提供常用加密算法。
+
+**主要功能：**
+- ✅ MD5加密
+- ✅ SHA256加密
+- ✅ Base64编码/解码
+
+**使用示例：**
+```swift
+// MD5
+let md5 = "Hello World".md5
+
+// SHA256
+let sha256 = "Hello World".sha256
+
+// Base64
+let encoded = "Hello World".base64Encoded
+let decoded = encoded?.base64Decoded
+```
+
+### ShareHelper
+
+分享功能封装，简化系统分享。
+
+**主要功能：**
+- ✅ 分享文本
+- ✅ 分享图片
+- ✅ 分享URL
+- ✅ 分享多个项目
+- ✅ iPad支持
+
+**使用示例：**
+```swift
+// 分享文本
+viewController.shareText("要分享的文本")
+
+// 分享图片
+viewController.shareImage(image)
+
+// 分享URL
+viewController.shareURL(url)
+
+// 或使用工具类
+ShareHelper.shareText("文本", from: viewController)
+```
+
+### VersionHelper
+
+版本管理工具类，提供版本比较功能。
+
+**主要功能：**
+- ✅ 版本号比较
+- ✅ iOS版本检查
+- ✅ 应用版本检查
+
+**使用示例：**
+```swift
+// 版本比较
+VersionHelper.compare("1.2.3", "1.2.0")  // 1 (大于)
+
+// iOS版本检查
+VersionHelper.isIOSVersionGreaterOrEqual("13.0")
+
+// 应用版本检查
+VersionHelper.isAppVersionGreaterOrEqual("1.0.0")
+```
+
+### Data+Extension
+
+Data扩展，提供常用转换和操作。
+
+**主要功能：**
+- ✅ 字符串转换
+- ✅ 十六进制转换
+- ✅ Base64编码/解码
+- ✅ JSON转换
+- ✅ 文件操作
+
+**使用示例：**
+```swift
+// 转换为字符串
+let string = data.toString()
+
+// 转换为十六进制
+let hex = data.toHexString()
+
+// 转换为JSON
+let dict = data.toDictionary()
+
+// 格式化大小
+let size = data.formattedSize
+```
+
+### Bundle+Extension
+
+Bundle扩展，提供应用信息获取。
+
+**主要功能：**
+- ✅ 应用信息获取
+- ✅ 文件读取
+- ✅ JSON文件读取
+
+**使用示例：**
+```swift
+// 应用信息
+Bundle.main.appName
+Bundle.main.appVersion
+Bundle.main.bundleId
+
+// 读取文件
+Bundle.main.readFile(name: "config", type: "json")
+Bundle.main.readJSON(name: "config")
+```
+
 ## 📱 使用示例
 
 项目包含完整的示例应用，展示了所有工具类的使用方法。运行项目后，可以在主界面查看各个工具类的示例。
 
+## 🚀 快速开始
+
+### 基本使用
+
+```swift
+// UIView扩展
+view.setCornerRadius(10)
+view.setShadow(color: .black, opacity: 0.1, radius: 4)
+
+// UIColor扩展
+let color = UIColor(hex: "#FF0000")
+
+// String扩展
+"test@example.com".isValidEmail  // true
+
+// 网络请求
+MCNetworkManager.shared.request(MCApiService.banners)
+    .subscribe(onNext: { response in
+        // 处理数据
+    })
+
+// 图片加载
+imageView.setImage(urlString: "https://example.com/image.jpg")
+
+// Toast提示
+view.showToast(message: "提示信息")
+```
+
+更多示例请查看 [QuickStart.md](./SPiOSShopping/Utils/QuickStart.md)
+
 ## 📦 安装说明
 
+### 使用 CocoaPods
+
+项目已配置 CocoaPods，依赖的第三方库包括：
+- Moya (网络请求)
+- RxSwift (响应式编程)
+- Kingfisher (图片加载)
+- MJRefresh (下拉刷新)
+- SnapKit (自动布局)
+- SwiftyJSON (JSON解析)
+- EmptyDataSet-Swift (空数据视图)
+- 等等...
+
+### 使用 Swift Package Manager
+
+项目包含一个 SPM 依赖：
+- Toast-Swift (Toast提示)
+
+### 手动安装
+
 1. 将 `Utils` 文件夹添加到项目中
-2. 确保所有文件都已添加到 Target
-3. 直接使用即可，无需额外配置
+2. 将 `MCHttpManager` 文件夹添加到项目中
+3. 确保所有文件都已添加到 Target
+4. 安装 CocoaPods 依赖：`pod install`
+5. 直接使用即可
 
 ## 📄 许可证
 
@@ -805,9 +1036,19 @@ MIT License
 
 ## 📝 更新日志
 
+### v1.2.0
+- 新增权限管理工具类（PermissionHelper）
+- 新增加密解密工具类（CryptoHelper）
+- 新增分享功能封装（ShareHelper）
+- 新增版本管理工具类（VersionHelper）
+- 新增Data扩展（字符串转换、十六进制、JSON等）
+- 新增Bundle扩展（应用信息、文件读取等）
+- 完善文档和示例
+
 ### v1.1.0
 - 新增网络请求封装（MCNetworkManager、MCResponse、MCNetworkError）
 - 新增第三方库封装（Kingfisher、MJRefresh、SnapKit、SwiftyJSON等）
+- 新增SPM库封装（Toast-Swift）
 - 新增加载状态管理（MCLoadingManager）
 - 新增网络插件（MCNetworkPlugin、MCNetworkLoggerPlugin）
 - 完善示例应用，添加所有工具类的演示
