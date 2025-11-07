@@ -17,14 +17,25 @@ class MCRealmManager {
     /// Realm实例
     private var realm: Realm?
     
+    /// 初始化锁
+    private let initLock = NSLock()
+    
     private init() {
-        setupRealm()
+        // 延迟初始化，避免在应用启动时立即初始化
     }
     
     // MARK: - 初始化
     
-    /// 配置Realm
+    /// 配置Realm（延迟初始化）
     private func setupRealm() {
+        initLock.lock()
+        defer { initLock.unlock() }
+        
+        // 如果已经初始化，直接返回
+        if realm != nil {
+            return
+        }
+        
         do {
             // 配置Realm
             var config = Realm.Configuration()
@@ -40,15 +51,17 @@ class MCRealmManager {
             config.migrationBlock = { migration, oldSchemaVersion in
                 if oldSchemaVersion < 1 {
                     // 执行迁移逻辑
+                    // 例如：添加新字段、删除字段等
                 }
             }
             
             // 创建Realm实例
             realm = try Realm(configuration: config)
             
-            PrintHelper.info("Realm数据库初始化成功")
+            PrintHelper.info("Realm数据库初始化成功，路径: \(config.fileURL?.path ?? "未知")")
         } catch {
             PrintHelper.error("Realm数据库初始化失败: \(error)")
+            // 不抛出异常，允许应用继续运行
         }
     }
     
@@ -57,6 +70,11 @@ class MCRealmManager {
     /// 获取Realm实例
     /// - Returns: Realm实例
     func getRealm() throws -> Realm {
+        // 延迟初始化
+        if realm == nil {
+            setupRealm()
+        }
+        
         guard let realm = realm else {
             throw NSError(domain: "MCRealmManager", code: -1, userInfo: [NSLocalizedDescriptionKey: "Realm未初始化"])
         }
