@@ -48,6 +48,7 @@ class MainToolListViewController: UIViewController {
             ToolItem(title: "加密解密", description: "MD5、SHA256、Base64等", type: .crypto),
             ToolItem(title: "分享功能", description: "系统分享功能封装", type: .share),
             ToolItem(title: "版本管理", description: "版本比较和检查", type: .version),
+            ToolItem(title: "Realm 数据库", description: "Realm数据库封装", type: .realm),
         ])
     ]
     
@@ -186,6 +187,8 @@ extension MainToolListViewController: UITableViewDelegate {
             return ShareExampleViewController()
         case .version:
             return VersionExampleViewController()
+        case .realm:
+            return RealmExampleViewController()
         }
     }
 }
@@ -228,6 +231,7 @@ enum ToolType {
     case crypto
     case share
     case version
+    case realm
 }
 
 // MARK: - 工具列表单元格

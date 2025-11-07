@@ -965,6 +965,61 @@ Bundle.main.readFile(name: "config", type: "json")
 Bundle.main.readJSON(name: "config")
 ```
 
+### RealmWrapper
+
+Realm数据库封装，简化Realm的使用（SPM库）。
+
+**主要功能：**
+- ✅ 写入对象（单个/多个）
+- ✅ 查询对象（所有/条件查询/主键查询）
+- ✅ 更新对象
+- ✅ 删除对象
+- ✅ 数据库管理
+
+**使用示例：**
+```swift
+// 写入对象
+let user = MCUser(id: 1, name: "张三", email: "zhangsan@example.com")
+MCRealmManager.shared.write(user)
+
+// 查询所有
+if let users = MCRealmManager.shared.objects(MCUser.self) {
+    print("用户数量: \(users.count)")
+}
+
+// 条件查询（使用NSPredicate）
+let predicate = NSPredicate(format: "age > %d", 18)
+if let users = MCRealmManager.shared.objects(MCUser.self, where: predicate) {
+    // 处理结果
+}
+
+// 条件查询（字符串格式）
+if let users = MCRealmManager.shared.objects(MCUser.self, where: "age > %d", args: [18]) {
+    // 处理结果
+}
+
+// 主键查询
+if let user = MCRealmManager.shared.object(ofType: MCUser.self, forPrimaryKey: 1) {
+    // 处理用户
+}
+
+// 更新对象
+MCRealmManager.shared.write {
+    realm in
+    user.name = "新名称"
+    user.age = 25
+}
+
+// 删除对象
+MCRealmManager.shared.delete(user)
+
+// 便捷方法
+user.save()  // 保存
+user.delete()  // 删除
+```
+
+**注意：** 需要在Xcode中添加Realm Swift Package依赖。
+
 ## 📱 使用示例
 
 项目包含完整的示例应用，展示了所有工具类的使用方法。运行项目后，可以在主界面查看各个工具类的示例。
@@ -1015,8 +1070,16 @@ view.showToast(message: "提示信息")
 
 ### 使用 Swift Package Manager
 
-项目包含一个 SPM 依赖：
+项目包含以下 SPM 依赖：
 - Toast-Swift (Toast提示)
+- RealmSwift (Realm数据库)
+
+**添加Realm依赖：**
+1. 在Xcode中选择项目
+2. 选择Target -> Package Dependencies
+3. 点击 "+" 添加包
+4. 输入URL: `https://github.com/realm/realm-swift`
+5. 选择版本并添加
 
 ### 手动安装
 
@@ -1035,6 +1098,12 @@ MIT License
 顾明次
 
 ## 📝 更新日志
+
+### v1.3.0
+- 新增Realm数据库封装（RealmWrapper）
+- 新增Realm数据模型示例（MCUser、MCProduct等）
+- 完善数据库操作封装（增删改查）
+- 添加Realm安装指南
 
 ### v1.2.0
 - 新增权限管理工具类（PermissionHelper）

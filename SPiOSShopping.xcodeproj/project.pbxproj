@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		97B57BBC33AFA1DFD86F9FE9 /* Pods_SPiOSShopping.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 933FF0A2E69642F0112ABEF9 /* Pods_SPiOSShopping.framework */; };
+		9A04D8522EBDCB9300ACA069 /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 9A04D8512EBDCB9300ACA069 /* Realm */; };
+		9A04D8542EBDCB9300ACA069 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 9A04D8532EBDCB9300ACA069 /* RealmSwift */; };
 		AC5D4ED42E72A5BF00628F50 /* Toast in Frameworks */ = {isa = PBXBuildFile; productRef = AC5D4ED32E72A5BF00628F50 /* Toast */; };
 /* End PBXBuildFile section */
 
@@ -44,6 +46,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9A04D8542EBDCB9300ACA069 /* RealmSwift in Frameworks */,
+				9A04D8522EBDCB9300ACA069 /* Realm in Frameworks */,
 				AC5D4ED42E72A5BF00628F50 /* Toast in Frameworks */,
 				97B57BBC33AFA1DFD86F9FE9 /* Pods_SPiOSShopping.framework in Frameworks */,
 			);
@@ -138,6 +142,7 @@
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
 				AC5D4ED22E72A5BF00628F50 /* XCRemoteSwiftPackageReference "Toast-Swift" */,
+				9A04D8502EBDCB9300ACA069 /* XCRemoteSwiftPackageReference "realm-swift" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = ACD0075E2E61D41A00439978 /* Products */;
@@ -421,6 +426,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		9A04D8502EBDCB9300ACA069 /* XCRemoteSwiftPackageReference "realm-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/realm/realm-swift";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
 		AC5D4ED22E72A5BF00628F50 /* XCRemoteSwiftPackageReference "Toast-Swift" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/scalessec/Toast-Swift";
@@ -432,6 +445,16 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		9A04D8512EBDCB9300ACA069 /* Realm */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 9A04D8502EBDCB9300ACA069 /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = Realm;
+		};
+		9A04D8532EBDCB9300ACA069 /* RealmSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 9A04D8502EBDCB9300ACA069 /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = RealmSwift;
+		};
 		AC5D4ED32E72A5BF00628F50 /* Toast */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = AC5D4ED22E72A5BF00628F50 /* XCRemoteSwiftPackageReference "Toast-Swift" */;
