@@ -43,6 +43,7 @@ class MainToolListViewController: UIViewController {
             ToolItem(title: "UserDefaults 扩展", description: "用户偏好设置扩展", type: .userdefaults),
             ToolItem(title: "PrintHelper", description: "打印工具类", type: .printhelper),
             ToolItem(title: "网络请求", description: "网络请求封装和调用", type: .network),
+            ToolItem(title: "第三方库封装", description: "Kingfisher、MJRefresh等封装", type: .thirdparty),
         ])
     ]
     
@@ -171,6 +172,8 @@ extension MainToolListViewController: UITableViewDelegate {
             return PrintHelperExampleViewController()
         case .network:
             return NetworkExampleViewController()
+        case .thirdparty:
+            return ThirdPartyWrapperExampleViewController()
         }
     }
 }
@@ -208,6 +211,7 @@ enum ToolType {
     case userdefaults
     case printhelper
     case network
+    case thirdparty
 }
 
 // MARK: - 工具列表单元格

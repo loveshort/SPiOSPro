@@ -6,6 +6,8 @@
 
 - [扩展类 (Extensions)](#扩展类-extensions)
 - [工具类 (Helpers)](#工具类-helpers)
+- [网络请求封装](#网络请求封装)
+- [第三方库封装](#第三方库封装)
 - [使用示例](#使用示例)
 - [安装说明](#安装说明)
 
@@ -494,6 +496,295 @@ PrintHelper.error("错误信息")
 PrintHelper.success("成功信息")
 ```
 
+## 🌐 网络请求封装
+
+### MCNetworkManager
+
+网络请求管理器，提供统一的网络请求接口，支持缓存、错误处理等功能。
+
+**主要功能：**
+- ✅ 统一响应格式（MCResponse）
+- ✅ 自动缓存管理
+- ✅ 网络状态监听
+- ✅ 错误统一处理
+- ✅ 加载状态管理
+- ✅ Token自动添加
+
+**使用示例：**
+```swift
+// 基本请求（统一响应格式）
+networkManager.request(MCApiService.login(username: "test", password: "123"))
+    .subscribe(onNext: { (response: MCResponse<UserModel>) in
+        if response.isSuccess, let user = response.data {
+            // 处理成功
+        }
+    }, onError: { error in
+        // 处理错误
+    })
+
+// 直接获取数据
+networkManager.requestData(MCApiService.productList(page: 1, pageSize: 10))
+    .subscribe(onNext: { (products: [ProductModel]) in
+        // 处理数据
+    })
+
+// 分页请求
+networkManager.requestPage(MCApiService.productList(page: 1, pageSize: 10))
+    .subscribe(onNext: { (pageResponse: MCPageResponse<ProductModel>) in
+        print("当前页: \(pageResponse.page)")
+        print("总数: \(pageResponse.total)")
+    })
+
+// 带加载提示的请求
+networkManager.requestWithCache(MCApiService.banners)
+    .showLoading(message: "加载中...", inView: view)
+    .subscribe(onNext: { banners in
+        // 处理数据
+    })
+```
+
+### MCResponse
+
+统一响应模型，包含状态码、消息和数据。
+
+**使用示例：**
+```swift
+struct MCResponse<T: Codable>: Codable {
+    let code: Int
+    let message: String
+    let data: T?
+    var isSuccess: Bool { return code == 200 || code == 0 }
+}
+```
+
+### MCNetworkError
+
+网络错误枚举，统一错误处理。
+
+**错误类型：**
+- `networkUnavailable` - 网络不可用
+- `timeout` - 请求超时
+- `serverError` - 服务器错误
+- `decodeError` - 数据解析失败
+- `businessError` - 业务错误
+
+## 📦 第三方库封装
+
+### KingfisherWrapper
+
+图片加载封装，简化Kingfisher的使用。
+
+**主要功能：**
+- ✅ 一行代码加载网络图片
+- ✅ 自动圆角处理
+- ✅ 图片预加载
+- ✅ 缓存管理
+
+**使用示例：**
+```swift
+// 加载网络图片
+imageView.setImage(urlString: "https://example.com/image.jpg")
+
+// 加载带圆角的图片
+imageView.setImage(urlString: "https://example.com/image.jpg", cornerRadius: 10)
+
+// 加载圆形图片
+imageView.setRoundImage(urlString: "https://example.com/image.jpg")
+
+// 预加载图片
+MCImageLoader.prefetchImages(["url1", "url2", "url3"])
+
+// 清除缓存
+MCImageLoader.clearMemoryCache()
+MCImageLoader.clearDiskCache()
+```
+
+### MJRefreshWrapper
+
+下拉刷新封装，简化MJRefresh的使用。
+
+**主要功能：**
+- ✅ 一行代码添加下拉刷新
+- ✅ 一行代码添加上拉加载
+- ✅ 自定义刷新文字
+- ✅ 自动状态管理
+
+**使用示例：**
+```swift
+// 添加下拉刷新
+tableView.addHeaderRefresh {
+    // 刷新数据
+    loadData()
+}
+
+// 添加上拉加载
+tableView.addFooterRefresh {
+    // 加载更多
+    loadMore()
+}
+
+// 结束刷新
+tableView.endRefreshing()
+tableView.endLoading()
+
+// 没有更多数据
+tableView.endLoadingWithNoMoreData()
+```
+
+### SnapKitWrapper
+
+自动布局封装，简化SnapKit的使用。
+
+**主要功能：**
+- ✅ 快速填充父视图
+- ✅ 快速居中
+- ✅ 快速对齐
+- ✅ 固定尺寸
+
+**使用示例：**
+```swift
+// 填充父视图
+subView.fillSuperview(insets: UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10))
+
+// 居中
+subView.centerInSuperview(size: CGSize(width: 100, height: 100))
+
+// 顶部对齐
+subView.alignTop(top: 0, left: 0, right: 0, height: 44)
+
+// 固定尺寸
+subView.setSize(width: 100, height: 100)
+```
+
+### SwiftyJSONWrapper
+
+JSON解析封装，简化SwiftyJSON的使用。
+
+**主要功能：**
+- ✅ 安全获取值（带默认值）
+- ✅ JSON解析工具
+- ✅ Codable转换
+
+**使用示例：**
+```swift
+// 解析JSON
+if let json = MCJSONHelper.parse(jsonString) {
+    let name = json["name"].stringValue("默认名称")
+    let age = json["age"].intValue(0)
+    let isActive = json["isActive"].boolValue(false)
+}
+
+// JSON转字符串
+let jsonString = MCJSONHelper.stringify(json)
+
+// Codable转换
+let user = json.toObject(User.self)
+let json = user.toJSON()
+```
+
+### EmptyDataSetWrapper
+
+空数据视图封装，简化EmptyDataSet的使用。
+
+**主要功能：**
+- ✅ 一行代码设置空数据视图
+- ✅ 支持标题、描述、图片、按钮
+- ✅ 自动实现协议
+
+**使用示例：**
+```swift
+tableView.setEmptyDataSet(
+    title: "暂无数据",
+    description: "这里还没有任何内容",
+    image: UIImage(systemName: "tray"),
+    buttonTitle: "刷新",
+    buttonAction: {
+        // 刷新操作
+        loadData()
+    }
+)
+```
+
+### RxSwiftWrapper
+
+响应式编程封装，简化RxSwift的使用。
+
+**主要功能：**
+- ✅ 简化事件绑定
+- ✅ 手势事件扩展
+- ✅ 加载状态扩展
+- ✅ 错误处理扩展
+
+**使用示例：**
+```swift
+// 按钮点击
+button.rx.tap
+    .subscribe(onNext: {
+        // 处理点击
+    })
+    .disposed(by: disposeBag)
+
+// 视图点击手势
+view.rx.tapGesture
+    .subscribe(onNext: { _ in
+        // 处理点击
+    })
+    .disposed(by: disposeBag)
+
+// 带加载状态的请求
+observable
+    .showLoading(in: view, message: "加载中...")
+    .subscribe(onNext: { data in
+        // 处理数据
+    })
+```
+
+### RouterWrapper
+
+路由封装，简化JLSwiftRouter的使用。
+
+**主要功能：**
+- ✅ 路由注册
+- ✅ Push跳转
+- ✅ Present弹出
+- ✅ 参数传递
+
+**使用示例：**
+```swift
+// 注册路由
+MCRouter.shared.register(path: "/user/detail") { params in
+    let userId = params?["userId"] as? Int ?? 0
+    return UserDetailViewController(userId: userId)
+}
+
+// Push跳转
+MCRouter.shared.push(path: "/user/detail", params: ["userId": 123])
+
+// 或使用扩展方法
+viewController.push(path: "/user/detail", params: ["userId": 123])
+```
+
+### SwiftyBeaverWrapper
+
+日志封装，简化SwiftyBeaver的使用。
+
+**主要功能：**
+- ✅ 分级日志（Debug、Info、Warning、Error）
+- ✅ 自动配置
+- ✅ 文件日志支持
+
+**使用示例：**
+```swift
+// 使用封装类
+MCLogger.shared.debug("调试信息")
+MCLogger.shared.info("普通信息")
+MCLogger.shared.warning("警告信息")
+MCLogger.shared.error("错误信息")
+
+// 或使用全局函数
+MCLog("调试信息", level: .debug)
+```
+
 ## 📱 使用示例
 
 项目包含完整的示例应用，展示了所有工具类的使用方法。运行项目后，可以在主界面查看各个工具类的示例。
@@ -513,6 +804,13 @@ MIT License
 顾明次
 
 ## 📝 更新日志
+
+### v1.1.0
+- 新增网络请求封装（MCNetworkManager、MCResponse、MCNetworkError）
+- 新增第三方库封装（Kingfisher、MJRefresh、SnapKit、SwiftyJSON等）
+- 新增加载状态管理（MCLoadingManager）
+- 新增网络插件（MCNetworkPlugin、MCNetworkLoggerPlugin）
+- 完善示例应用，添加所有工具类的演示
 
 ### v1.0.0
 - 初始版本
