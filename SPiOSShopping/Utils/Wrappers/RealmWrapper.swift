@@ -203,10 +203,9 @@ class MCRealmManager {
     func deleteAll<T: Object>(_ type: T.Type) {
         do {
             let realm = try getRealm()
-            if let objects = realm.objects(type) as? Results<T> {
-                try realm.write {
-                    realm.delete(objects)
-                }
+            let objects = realm.objects(type)
+            try realm.write {
+                realm.delete(objects)
             }
         } catch {
             PrintHelper.error("删除对象失败: \(error)")
@@ -277,25 +276,6 @@ extension Object {
     }
 }
 
-// MARK: - 查询结果扩展
-extension Results {
-    
-    /// 转换为数组
-    /// - Returns: 数组
-    func toArray() -> [Element] {
-        return Array(self)
-    }
-    
-    /// 分页获取
-    /// - Parameters:
-    ///   - page: 页码（从1开始）
-    ///   - pageSize: 每页数量
-    /// - Returns: 分页后的数组
-    func paginated(page: Int, pageSize: Int) -> [Element] {
-        let startIndex = (page - 1) * pageSize
-        let endIndex = min(startIndex + pageSize, count)
-        guard startIndex < count else { return [] }
-        return Array(self[startIndex..<endIndex])
-    }
-}
+// MARK: - 查询结果扩展（已移至RealmHelper.swift）
+// Results的扩展方法在RealmHelper.swift中定义
 

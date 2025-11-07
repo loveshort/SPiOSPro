@@ -43,6 +43,12 @@ class RealmExampleViewController: BaseExampleViewController {
             },
             ExampleItem(title: "数据库信息", description: "MCRealmManager.shared.getDatabaseSize()") {
                 self.demoDatabaseInfo()
+            },
+            ExampleItem(title: "排序查询", description: "results.sorted(by:ascending:)") {
+                self.demoSorted()
+            },
+            ExampleItem(title: "分页查询", description: "results.paginated(page:pageSize:)") {
+                self.demoPagination()
             }
         ]
         
@@ -109,9 +115,38 @@ class RealmExampleViewController: BaseExampleViewController {
     private func demoDatabaseInfo() {
         let size = MCRealmManager.shared.getDatabaseSizeString()
         if let users = MCRealmManager.shared.objects(User.self) {
-            showResult("数据库大小: \(size)\n用户总数: \(users.count)")
+            let path = RealmHelper.getDatabasePath() ?? "未知"
+            showResult("数据库大小: \(size)\n用户总数: \(users.count)\n数据库路径: \(path)")
         } else {
             showResult("数据库大小: \(size)")
+        }
+    }
+    
+    private func demoSorted() {
+        if let users = MCRealmManager.shared.objects(User.self) {
+            let sortedUsers = users.sorted(by: "age", ascending: false)
+            let userList = sortedUsers.prefix(5).map { "\($0.name) (年龄: \($0.age))" }.joined(separator: "\n")
+            showResult("按年龄降序排列（前5个）:\n\(userList.isEmpty ? "暂无数据" : userList)")
+        } else {
+            showResult("查询失败")
+        }
+    }
+    
+    private func demoPagination() {
+        if let users = MCRealmManager.shared.objects(User.self) {
+            let page1 = users.paginated(page: 1, pageSize: 5)
+            let page2 = users.paginated(page: 2, pageSize: 5)
+            let totalPages = (users.count + 4) / 5
+            
+            var result = "总数: \(users.count)\n总页数: \(totalPages)\n\n"
+            result += "第1页 (\(page1.count)条):\n"
+            result += page1.map { "\($0.name)" }.joined(separator: "\n")
+            result += "\n\n第2页 (\(page2.count)条):\n"
+            result += page2.map { "\($0.name)" }.joined(separator: "\n")
+            
+            showResult(result)
+        } else {
+            showResult("查询失败")
         }
     }
     
