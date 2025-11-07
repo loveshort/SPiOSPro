@@ -6,6 +6,11 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		9A04D85F2EBDCD8100ACA069 /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 9A04D85E2EBDCD8100ACA069 /* Realm */; };
+		9A04D8612EBDCD8100ACA069 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 9A04D8602EBDCD8100ACA069 /* RealmSwift */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
 		9A78A7482EBDC0F6005A6514 /* SPSwiftUIShoppingPro.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SPSwiftUIShoppingPro.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -23,6 +28,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9A04D8612EBDCD8100ACA069 /* RealmSwift in Frameworks */,
+				9A04D85F2EBDCD8100ACA069 /* Realm in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -65,6 +72,8 @@
 			);
 			name = SPSwiftUIShoppingPro;
 			packageProductDependencies = (
+				9A04D85E2EBDCD8100ACA069 /* Realm */,
+				9A04D8602EBDCD8100ACA069 /* RealmSwift */,
 			);
 			productName = SPSwiftUIShoppingPro;
 			productReference = 9A78A7482EBDC0F6005A6514 /* SPSwiftUIShoppingPro.app */;
@@ -94,6 +103,9 @@
 			);
 			mainGroup = 9A78A73F2EBDC0F6005A6514;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				9A04D85D2EBDCD8100ACA069 /* XCRemoteSwiftPackageReference "realm-swift" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 9A78A7492EBDC0F6005A6514 /* Products */;
 			projectDirPath = "";
@@ -326,6 +338,30 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		9A04D85D2EBDCD8100ACA069 /* XCRemoteSwiftPackageReference "realm-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/realm/realm-swift";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		9A04D85E2EBDCD8100ACA069 /* Realm */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 9A04D85D2EBDCD8100ACA069 /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = Realm;
+		};
+		9A04D8602EBDCD8100ACA069 /* RealmSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 9A04D85D2EBDCD8100ACA069 /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = RealmSwift;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 9A78A7402EBDC0F6005A6514 /* Project object */;
 }
