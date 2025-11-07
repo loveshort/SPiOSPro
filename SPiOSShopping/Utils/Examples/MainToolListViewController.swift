@@ -42,6 +42,7 @@ class MainToolListViewController: UIViewController {
             ToolItem(title: "ThreadHelper", description: "线程工具类", type: .threadhelper),
             ToolItem(title: "UserDefaults 扩展", description: "用户偏好设置扩展", type: .userdefaults),
             ToolItem(title: "PrintHelper", description: "打印工具类", type: .printhelper),
+            ToolItem(title: "网络请求", description: "网络请求封装和调用", type: .network),
         ])
     ]
     
@@ -168,6 +169,8 @@ extension MainToolListViewController: UITableViewDelegate {
             return UserDefaultsExampleViewController()
         case .printhelper:
             return PrintHelperExampleViewController()
+        case .network:
+            return NetworkExampleViewController()
         }
     }
 }
@@ -204,6 +207,7 @@ enum ToolType {
     case threadhelper
     case userdefaults
     case printhelper
+    case network
 }
 
 // MARK: - 工具列表单元格
