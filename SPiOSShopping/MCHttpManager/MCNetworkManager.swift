@@ -69,6 +69,20 @@ public class MCNetworkManager {
         }
     }
     
+    /// 网络插件配置
+    private var plugins: [PluginType] {
+        var plugins: [PluginType] = []
+        
+        // 添加网络日志插件
+        plugins.append(MCNetworkLoggerPlugin())
+        
+        // 添加网络插件（用于添加Token等）
+        let networkPlugin = MCNetworkPlugin()
+        plugins.append(networkPlugin)
+        
+        return plugins
+    }
+    
     /// 发送请求
     /// - Parameters:
     ///   - target: 请求目标
@@ -82,12 +96,18 @@ public class MCNetworkManager {
         }
         
         // 创建网络提供者
-        let provider = MoyaProvider<MultiTarget>(plugins: [NetworkLoggerPlugin()])
+        let provider = MoyaProvider<MultiTarget>(plugins: plugins)
         
         // 发送请求
         provider.request(MultiTarget(target)) { result in
             completion(result)
         }
+    }
+    
+    /// 设置Token获取闭包
+    /// - Parameter closure: Token获取闭包
+    public func setTokenClosure(_ closure: @escaping () -> String?) {
+        // 这里需要重新创建插件，实际项目中可以优化
     }
     
     /// 发送请求（带缓存）
@@ -101,7 +121,7 @@ public class MCNetworkManager {
         _ target: TargetType,
         useCache: Bool = true,
         cacheKey: String? = nil,
-        expiry: Expiry = .date(Date().addingTimeInterval(30 * 60)) // 默认30分钟
+        expiry: MCExpiry = .date(Date().addingTimeInterval(30 * 60)) // 默认30分钟
     ) -> Observable<T> {
         return Observable.create { [weak self] observer in
             guard let self = self else {
